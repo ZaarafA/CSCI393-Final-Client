@@ -47,6 +47,19 @@ export const addCampusThunk = (campus) => async (dispatch) => {  // The THUNK
   }
 };
 
+// Edit campus
+// THUNK CREATOR:
+export const editCampusThunk = campus => async dispatch => {  // The THUNK
+  try {
+    // API "put" call to update campus (based on "id" and "campus" object's data) from database
+    let updatedCampus = await axios.put(`/api/campuses/${campus.id}`, campus); 
+    // Update successful so change state with dispatch
+    dispatch(ac.editCampus(updatedCampus));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 
 // All Students
 // THUNK CREATOR:
