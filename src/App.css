@@ -25,7 +25,7 @@ a {
   transition: transform 0.2s ease;
 }
 a:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .delete-button{
@@ -35,7 +35,6 @@ a:hover{
   border-radius: 5px;
   margin-bottom: 5px;
 }
-
 .add-button{
   padding: 6px 16px;
   border: solid var(--rich-black) 2px;
@@ -56,4 +55,33 @@ a:hover{
   background-color: var(--med-green);
   padding: 5px;
   border-radius: 25px;
+}
+
+
+.home-page{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-campuses, .home-students {
+  position: relative;
+  width: fit-content;
+  margin: 15px;
+  border-radius: 5px;
+  border: solid var(--rich-black) 5px;
+}
+.home-image-title{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 25px;
+  font-size: 25px;
+}
+.home-image-title h3{
+  margin: 0;
 }
