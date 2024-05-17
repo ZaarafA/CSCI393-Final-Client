@@ -1,8 +1,11 @@
 :root{
+  --rich-black: #01110a;
   --dark-green: #032221;
   --off-white: #f1f7f6;
   --light-green: #00DF81;
   --med-green: #03624c;
+  --chardonnay: #ffc06e;
+  --red: #b8293d;
 }
 
 .App {
@@ -23,4 +26,20 @@ a {
 }
 a:hover{
   transform: scale(1.1);
+}
+
+.delete-button{
+  padding: 2px 12px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--chardonnay);
+  border-radius: 5px;
+}
+
+.add-button{
+  padding: 6px 16px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--light-green);
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
