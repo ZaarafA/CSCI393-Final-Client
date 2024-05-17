@@ -25,21 +25,33 @@ class NewStudentContainer extends Component {
       gpa: null,
       campusId: null, 
       redirect: false, 
-      redirectId: null
+      redirectId: null,
+      errors: {
+        firstname: "",
+        lastname: "",
+        email: ""
+      }
     };
   }
 
   // Capture input data when it is entered
   handleChange = event => {
+    const { name, value } = event.target;
+    const errors = { ...this.state.errors };
+    errors[name] = "";
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value,
+      errors
     });
-  }
+  };
 
   // Take action after user click the submit button
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
+    if(!this.validateForm()){
+      return;
+    }
     let student = {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
@@ -65,6 +77,19 @@ class NewStudentContainer extends Component {
     });
   }
 
+  validateForm = () => {
+    const { firstname, lastname, email } = this.state;
+    const errors = {
+      firstname: firstname.trim() === '' ? 'First Name is required' : '',
+      lastname: lastname.trim() === '' ? 'Last Name is required' : '',
+      email: email.trim() === '' ? 'Email is required' : '',
+    };
+  
+    this.setState({ errors });
+  
+    return Object.values(errors).every(error => error === '');
+  }
+
   // Unmount when the component is being removed from the DOM:
   componentWillUnmount() {
       this.setState({redirect: false, redirectId: null});
@@ -83,7 +108,8 @@ class NewStudentContainer extends Component {
         <Header />
         <NewStudentView 
           handleChange = {this.handleChange} 
-          handleSubmit={this.handleSubmit}      
+          handleSubmit={this.handleSubmit}     
+          errors={this.state.errors}  
         />
       </div>          
     );
