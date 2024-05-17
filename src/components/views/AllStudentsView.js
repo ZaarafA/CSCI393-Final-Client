@@ -14,7 +14,7 @@ const AllStudentsView = (props) => {
     <div>
       <p>There are no students.</p>
       <Link to={`newstudent`}>
-        <button>Add New Student</button>
+        <button className="add-button">Add New Student</button>
       </Link>
     </div>
     );
