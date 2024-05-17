@@ -5,10 +5,28 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display a single campus and its students (if any).
 ================================================== */
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus} = props;
+  const {campus, allStudents, editStudent} = props;
+  const availableStudents = allStudents.filter(student => student.campusId !== campus.id);
+  const [studentIdToAdd, setStudentIdToAdd] = useState("");
+  
+  const handleChange = (event) => {
+    setStudentIdToAdd(Number(event.target.value));
+  };
+
+  const handleAddStudent = () => {
+    if (studentIdToAdd) {
+      const student = allStudents.find(s => s.id === studentIdToAdd);
+      if (student) {
+        const updatedStudent = { ...student, campusId: campus.id };
+        editStudent(updatedStudent);
+        setStudentIdToAdd("");
+      }
+    }
+  };
   
   // Render a single Campus view with list of its students
   return (
@@ -31,6 +49,16 @@ const CampusView = (props) => {
         })
       )}
       <Link to={`${campus.id}/edit`}>Edit Campus</Link>
+      <h2>Add a Student</h2>
+      <select value={studentIdToAdd} onChange={handleChange}>
+        <option value="">Select a Student</option>
+        {availableStudents.map((student) => (
+          <option key={student.id} value={student.id}>
+            {student.firstname} {student.lastname}
+          </option>
+        ))}
+      </select>
+      <button onClick={handleAddStudent}>Add to Campus</button>
     </div>
   );
 };
