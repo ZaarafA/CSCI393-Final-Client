@@ -20,12 +20,48 @@ class CampusContainer extends Component {
     this.props.fetchAllStudents();
   }
 
+  handleAddStudent = (studentIdToAdd, allStudents, campus) => {
+    if (studentIdToAdd) {
+      const student = allStudents.find(s => s.id === studentIdToAdd);
+      if (student) {
+        const updatedStudent = { ...student, campusId: campus.id };
+        this.props.editStudent(updatedStudent)
+          .then(() => {
+            window.location.reload();
+          })
+          .catch(err => {
+            console.error("Error adding student:", err);
+          });
+      }
+    }
+  };
+
+  handleUnenrollStudent = (studentId, allStudents) => {
+    const student = allStudents.find(s => s.id === studentId);
+    if (student) {
+      const updatedStudent = { ...student, campusId: null };
+      this.props.editStudent(updatedStudent)
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(err => {
+          console.error("Error unenrolling student:", err);
+        });
+    }
+  };
+
+
   // Render a Campus view by passing campus data as props to the corresponding View component
   render() {
     return (
       <div>
         <Header />
-        <CampusView campus={this.props.campus} allStudents={this.props.allStudents} editStudent={this.props.editStudent}/>
+        <CampusView campus={this.props.campus} 
+        allStudents={this.props.allStudents} 
+        editStudent={this.props.editStudent}
+        handleAddStudent={this.handleAddStudent}
+        handleUnenrollStudent={this.handleUnenrollStudent}
+        />
       </div>
     );
   }

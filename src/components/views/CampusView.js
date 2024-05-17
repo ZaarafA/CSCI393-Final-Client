@@ -9,7 +9,7 @@ import React, { useState } from "react";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, allStudents, editStudent} = props;
+  const {campus, allStudents, handleAddStudent, handleUnenrollStudent } = props;
   const availableStudents = allStudents.filter(student => student.campusId !== campus.id);
   const [studentIdToAdd, setStudentIdToAdd] = useState("");
   
@@ -17,33 +17,9 @@ const CampusView = (props) => {
     setStudentIdToAdd(Number(event.target.value));
   };
 
-  const handleAddStudent = () => {
-    if (studentIdToAdd) {
-      const student = allStudents.find(s => s.id === studentIdToAdd);
-      if (student) {
-        const updatedStudent = { ...student, campusId: campus.id };
-        editStudent(updatedStudent).then(() => {
-          window.location.reload();
-        }).catch(err => {
-          console.error("Error adding student:", err);
-        });
-        setStudentIdToAdd("");
-      }
-    }
-  };
-
-  const handleUnenrollStudent = (studentId) => {
-    const student = allStudents.find(s => s.id === studentId);
-    if (student) {
-      const updatedStudent = { ...student, campusId: null };
-      editStudent(updatedStudent)
-        .then(() => {
-          window.location.reload();
-        })
-        .catch(err => {
-          console.error("Error unenrolling student:", err);
-        });
-    }
+  const handleAddStudentEvent = () => {
+    handleAddStudent(studentIdToAdd, allStudents, campus);
+    setStudentIdToAdd("");
   };
 
   // Render a single Campus view with list of its students
@@ -65,7 +41,7 @@ const CampusView = (props) => {
               <Link to={`/student/${student.id}`}>
                 <h2>{name}</h2>
               </Link>
-              <button onClick={() => handleUnenrollStudent(student.id)}>UNENROLL</button>
+              <button onClick={() => handleUnenrollStudent(student.id, allStudents)}>UNENROLL</button>
             </div>
           );
         })
@@ -80,7 +56,7 @@ const CampusView = (props) => {
           </option>
         ))}
       </select>
-      <button onClick={handleAddStudent}>Add to Campus</button>
+      <button onClick={handleAddStudentEvent}>Add to Campus</button>
     </div>
   );
 };
