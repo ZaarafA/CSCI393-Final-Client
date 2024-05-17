@@ -31,6 +31,21 @@ const CampusView = (props) => {
       }
     }
   };
+
+  const handleUnenrollStudent = (studentId) => {
+    const student = allStudents.find(s => s.id === studentId);
+    if (student) {
+      const updatedStudent = { ...student, campusId: null };
+      editStudent(updatedStudent)
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(err => {
+          console.error("Error unenrolling student:", err);
+        });
+    }
+  };
+
   // Render a single Campus view with list of its students
   return (
     <div>
@@ -50,6 +65,7 @@ const CampusView = (props) => {
               <Link to={`/student/${student.id}`}>
                 <h2>{name}</h2>
               </Link>
+              <button onClick={() => handleUnenrollStudent(student.id)}>UNENROLL</button>
             </div>
           );
         })
