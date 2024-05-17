@@ -22,12 +22,15 @@ const CampusView = (props) => {
       const student = allStudents.find(s => s.id === studentIdToAdd);
       if (student) {
         const updatedStudent = { ...student, campusId: campus.id };
-        editStudent(updatedStudent);
+        editStudent(updatedStudent).then(() => {
+          window.location.reload();
+        }).catch(err => {
+          console.error("Error adding student:", err);
+        });
         setStudentIdToAdd("");
       }
     }
   };
-  
   // Render a single Campus view with list of its students
   return (
     <div>
