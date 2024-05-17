@@ -2,7 +2,7 @@
   --rich-black: #01110a;
   --dark-green: #032221;
   --off-white: #f1f7f6;
-  --light-green: #00DF81;
+  --light-green: #08f793;
   --med-green: #03624c;
   --chardonnay: #ffc06e;
   --red: #b8293d;
@@ -33,6 +33,7 @@ a:hover{
   border: solid var(--rich-black) 2px;
   background-color: var(--chardonnay);
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .add-button{
