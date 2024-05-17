@@ -62,33 +62,43 @@ hr{
 }
 
 
-.home-page{
+.home-page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.home-campuses, .home-students {
+.home-page a {
   position: relative;
-  width: fit-content;
   margin: 15px;
   border-radius: 5px;
   border: solid var(--rich-black) 5px;
+  overflow: hidden;
 }
-.home-image-title{
+
+.home-image {
+  display: block;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.home-image-title {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 97%;
+  width: 100%; 
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 25px;
-  font-size: 25px;
+  padding: 25px 10px; 
+  font-size: 20px;
+  text-align: center;
 }
-.home-image-title h3{
+
+.home-image-title h3 {
   margin: 0;
 }
+
 
 
 .campus-students{
