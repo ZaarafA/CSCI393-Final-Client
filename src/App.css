@@ -60,6 +60,18 @@ hr{
   padding: 5px;
   border-radius: 25px;
 }
+.campus-item img, .student-item img{
+  max-width: 200px;
+  max-height: 200px;
+  border: solid var(--dark-green) 3px;
+  border-radius: 10px;
+}
+.student-item img{
+  width: 100px;
+  height: 100px;
+  border: solid var(--dark-green) 3px;
+  border-radius: 100%;
+}
 
 
 .home-page {
