@@ -29,7 +29,8 @@ class NewStudentContainer extends Component {
       errors: {
         firstname: "",
         lastname: "",
-        email: ""
+        email: "",
+        gpa: null
       }
     };
   }
@@ -57,7 +58,7 @@ class NewStudentContainer extends Component {
         lastname: this.state.lastname,
         email: this.state.email,
         imageUrl: this.state.imageUrl,
-        gpa: this.state.gpa,
+        gpa: isNaN(parseFloat(this.state.gpa)) ? null : parseFloat(this.state.gpa),
         campusId: this.state.campusId
     };
     
@@ -78,17 +79,19 @@ class NewStudentContainer extends Component {
   }
 
   validateForm = () => {
-    const { firstname, lastname, email } = this.state;
+    const { firstname, lastname, email, gpa } = this.state;
     const errors = {
       firstname: firstname.trim() === '' ? 'First Name is required' : '',
       lastname: lastname.trim() === '' ? 'Last Name is required' : '',
       email: email.trim() === '' ? 'Email is required' : '',
+      gpa: (gpa !== '' && (parseFloat(gpa) < 0.0 || parseFloat(gpa) > 4.0)) ? 'Invalid GPA. Please enter a value between 0.0 and 4.0' : '',
     };
-  
+
     this.setState({ errors });
-  
-    return Object.values(errors).every(error => error === '');
-  }
+    const { gpa: gpaError, ...otherErrors } = errors;
+    return !(Object.values(otherErrors).some(error => error !== ''));
+}
+
 
   // Unmount when the component is being removed from the DOM:
   componentWillUnmount() {

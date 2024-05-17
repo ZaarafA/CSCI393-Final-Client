@@ -91,6 +91,7 @@ const NewStudentView = (props) => {
           {errors.firstname && <p>{errors.firstname}</p>}
           {errors.lastname && <p>{errors.lastname}</p>}
           {errors.email && <p>{errors.email}</p>}
+          {errors.gpa && <p>{errors.gpa}</p>}
       </div>
     </div>    
   )
