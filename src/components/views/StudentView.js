@@ -11,18 +11,20 @@ const StudentView = (props) => {
 
   // Render a single Student view 
   return (
-    <div>
-      <img src={`${student.imageUrl}`} alt=""/>
+    <div className="student-single">
+      <img src={`${student.imageUrl}` || 'https://picsum.photos/200/200'} alt="student"/>
       <h1>{student.firstname} {student.lastname}</h1>
-      {student.campus ? ( // Check if campus exists
-        <Link to={`/campus/${student.campus.id}`}>
-          <h3>{student.campus.name}</h3>
-        </Link>
-      ) : (
-        <p>Not Currently Enrolled</p>
-      )}
-      <p>Email: {student.email}</p>
-      <p>GPA: {student.gpa}</p>
+      <div className="student-info-section">
+        {student.campus ? ( // Check if campus exists
+          <Link to={`/campus/${student.campus.id}`}>
+            <h3>{student.campus.name}</h3>
+          </Link>
+        ) : (
+          <p className="student-info">Not Currently Enrolled</p>
+        )}
+        <p className="student-info">Email: {student.email}</p>
+        <p className="student-info">GPA: {student.gpa}</p>
+      </div>
       <Link to={`/student/${student.id}/edit`}>Edit Student</Link>
     </div>
   );

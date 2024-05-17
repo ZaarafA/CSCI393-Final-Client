@@ -140,3 +140,21 @@ hr{
 .campus-header img{
   border: solid var(--med-green) 3px;
 }
+.student-single {
+  margin: 25px;
+}
+.student-info-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.student-info {
+  width: fit-content;
+  border: 2px solid #11153e;
+  background-color: var(--med-green);
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-bottom: 5px;
+}
