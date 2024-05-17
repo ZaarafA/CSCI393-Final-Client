@@ -25,27 +25,40 @@ class NewStudentContainer extends Component {
       gpa: null,
       campusId: null, 
       redirect: false, 
-      redirectId: null
+      redirectId: null,
+      errors: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        gpa: null
+      }
     };
   }
 
   // Capture input data when it is entered
   handleChange = event => {
+    const { name, value } = event.target;
+    const errors = { ...this.state.errors };
+    errors[name] = "";
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value,
+      errors
     });
-  }
+  };
 
   // Take action after user click the submit button
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
+    if(!this.validateForm()){
+      return;
+    }
     let student = {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
         email: this.state.email,
         imageUrl: this.state.imageUrl,
-        gpa: this.state.gpa,
+        gpa: isNaN(parseFloat(this.state.gpa)) ? null : parseFloat(this.state.gpa),
         campusId: this.state.campusId
     };
     
@@ -65,6 +78,21 @@ class NewStudentContainer extends Component {
     });
   }
 
+  validateForm = () => {
+    const { firstname, lastname, email, gpa } = this.state;
+    const errors = {
+      firstname: firstname.trim() === '' ? 'First Name is required' : '',
+      lastname: lastname.trim() === '' ? 'Last Name is required' : '',
+      email: email.trim() === '' ? 'Email is required' : '',
+      gpa: (gpa !== '' && (parseFloat(gpa) < 0.0 || parseFloat(gpa) > 4.0)) ? 'GPA must be either blank or between 0.0 and 4.0' : '',
+    };
+
+    this.setState({ errors });
+    const { gpa: gpaError, ...otherErrors } = errors;
+    return !(Object.values(otherErrors).some(error => error !== ''));
+}
+
+
   // Unmount when the component is being removed from the DOM:
   componentWillUnmount() {
       this.setState({redirect: false, redirectId: null});
@@ -83,7 +111,8 @@ class NewStudentContainer extends Component {
         <Header />
         <NewStudentView 
           handleChange = {this.handleChange} 
-          handleSubmit={this.handleSubmit}      
+          handleSubmit={this.handleSubmit}     
+          errors={this.state.errors}  
         />
       </div>          
     );
