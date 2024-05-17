@@ -5,7 +5,7 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display the single student view page.
 ================================================== */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,16 +41,43 @@ const EditCampusView = (props) => {
     const classes = useStyles();
     const [editedCampus, setEditedCampus] = useState(campus);
     const [redirect, setRedirect] = useState(false);
+    const [validationMessages, setValidationMessages] = useState({
+      name: '',
+      address: '',
+    });
   
+    useEffect(() => {
+      setEditedCampus({
+          ...campus,
+      });
+    }, [campus])
+
     const handleChange = (event) => {
       const { name, value } = event.target;
       setEditedCampus({ ...editedCampus, [name]: value });
+      setValidationMessages({
+        ...validationMessages,
+        [name]: '',
+        name: name === 'name' ? '' : validationMessages.name,
+        address: name === 'address' ? '' : validationMessages.address, 
+      });
+    }
+
+    const validateForm = () => {
+      const messages = {
+          name: editedCampus.name.trim() === '' ? 'First name cannot be empty' : '',
+          address: editedCampus.address.trim() === '' ? 'Last name cannot be empty' : '',
+      };
+      setValidationMessages(messages);
+      return Object.values(messages).every(message => message === '');
     }
   
     const onSubmit = (event) => {
       event.preventDefault();
-      handleSubmit(editedCampus);
-      setRedirect(true);
+      if (validateForm()) {
+        handleSubmit(editedCampus);
+        setRedirect(true);
+      }
     }
   
     if (redirect) {
@@ -95,6 +122,8 @@ const EditCampusView = (props) => {
               <br/>
             </form>
           </div>
+          <div>{validationMessages.name}</div><br/>
+          <div>{validationMessages.address}</div><br/>
         </div>
       </div>    
     )
