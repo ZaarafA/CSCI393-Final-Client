@@ -1,10 +1,87 @@
+:root{
+  --rich-black: #01110a;
+  --dark-green: #032221;
+  --off-white: #f1f7f6;
+  --light-green: #08f793;
+  --med-green: #03624c;
+  --chardonnay: #ffc06e;
+  --red: #b8293d;
+}
+
 .App {
-  background-color: beige;
+  background-color: var(--dark-green);
   min-height: 100vh;
   text-align: center;
+  color: var(--off-white);
 }
 
 .App-link {
   color: #61dafb;
 }
 
+a {
+  color: var(--light-green);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+a:hover{
+  transform: scale(1.05);
+}
+
+.delete-button{
+  padding: 2px 12px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--chardonnay);
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.add-button{
+  padding: 6px 16px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--light-green);
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.all-students, .all-campuses{
+  display: flex;
+  flex-wrap: wrap;
+}
+.student-item, .campus-item{
+  width: 250px;
+  margin: 10px;
+  border: solid var(--rich-black) 5px;
+  background-color: var(--med-green);
+  padding: 5px;
+  border-radius: 25px;
+}
+
+
+.home-page{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-campuses, .home-students {
+  position: relative;
+  width: fit-content;
+  margin: 15px;
+  border-radius: 5px;
+  border: solid var(--rich-black) 5px;
+}
+.home-image-title{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 25px;
+  font-size: 25px;
+}
+.home-image-title h3{
+  margin: 0;
+}
