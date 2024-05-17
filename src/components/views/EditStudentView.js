@@ -73,7 +73,7 @@ const EditStudentView = (props) => {
             firstName: editedStudent.firstname.trim() === '' ? 'First name cannot be empty' : '',
             lastName: editedStudent.lastname.trim() === '' ? 'Last name cannot be empty' : '',
             email: editedStudent.email.trim() === '' ? 'Email cannot be empty' : '',
-            gpa: !isValidGPA(editedStudent.gpa) ? 'Invalid GPA. Please enter a value between 0.0 and 4.0' : '',
+            gpa: !isValidGPA(editedStudent.gpa) ? 'GPA must be either blank or between 0.0 and 4.0' : '',
         };
         setValidationMessages(messages);
         return Object.values(messages).every(message => message === '');

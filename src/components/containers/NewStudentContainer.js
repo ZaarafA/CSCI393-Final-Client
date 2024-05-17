@@ -84,7 +84,7 @@ class NewStudentContainer extends Component {
       firstname: firstname.trim() === '' ? 'First Name is required' : '',
       lastname: lastname.trim() === '' ? 'Last Name is required' : '',
       email: email.trim() === '' ? 'Email is required' : '',
-      gpa: (gpa !== '' && (parseFloat(gpa) < 0.0 || parseFloat(gpa) > 4.0)) ? 'Invalid GPA. Please enter a value between 0.0 and 4.0' : '',
+      gpa: (gpa !== '' && (parseFloat(gpa) < 0.0 || parseFloat(gpa) > 4.0)) ? 'GPA must be either blank or between 0.0 and 4.0' : '',
     };
 
     this.setState({ errors });
