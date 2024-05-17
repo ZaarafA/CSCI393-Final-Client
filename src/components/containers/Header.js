@@ -24,10 +24,10 @@ const useStyles = makeStyles(theme => ({
     fontType: 'bold',
     fontFamily: 'sans-serif', 
     fontSize: '35px', 
-    color: 'darkblue'
+    color: '#f1f7f6'
   },
   appBar:{
-    backgroundColor: '#fcb6bb',
+    backgroundColor: '#03624c',
     shadows: ['none'],
   },
   greeting:{
@@ -55,20 +55,20 @@ const Header = () => {
           </Typography>
 
           <Link className={classes.links} to={'/'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              Home
+            <Button variant="contained" color="#00DF81" style={{marginRight: '10px'}}>
+              <b>Home</b>
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              All Campuses
+            <Button variant="contained" color="#00DF81" style={{marginRight: '10px'}}>
+              <b>All Campuses</b>
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
-              All Students
+            <Button variant="contained" color="#00DF81">
+              <b>All Students</b>
             </Button>
           </Link>
         </Toolbar>
