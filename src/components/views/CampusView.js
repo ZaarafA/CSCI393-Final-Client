@@ -66,7 +66,7 @@ const CampusView = (props) => {
       </select>
       <button className="add-student-button" onClick={handleAddStudentEvent}>Add to Campus</button>
       <br/>
-      <button className="add-new-student-button"><a href="/newstudent">Add New Student</a></button>
+      <button className="add-new-student-button"><Link to="/newstudent">Add New Student</Link></button>
     </div>
   );
 };
