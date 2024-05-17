@@ -27,7 +27,8 @@ class CampusContainer extends Component {
         const updatedStudent = { ...student, campusId: campus.id };
         this.props.editStudent(updatedStudent)
           .then(() => {
-            window.location.reload();
+            this.props.fetchCampus(this.props.match.params.id);
+            this.props.fetchAllStudents();
           })
           .catch(err => {
             console.error("Error adding student:", err);
@@ -42,7 +43,8 @@ class CampusContainer extends Component {
       const updatedStudent = { ...student, campusId: null };
       this.props.editStudent(updatedStudent)
         .then(() => {
-          window.location.reload();
+          this.props.fetchCampus(this.props.match.params.id);
+          this.props.fetchAllStudents();
         })
         .catch(err => {
           console.error("Error unenrolling student:", err);

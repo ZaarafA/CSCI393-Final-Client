@@ -25,30 +25,38 @@ const CampusView = (props) => {
   // Render a single Campus view with list of its students
   return (
     <div>
-      <h1>{campus.name}</h1>
-      <p>{campus.address}</p>
-      <p>{campus.description}</p>
-      <Link to={`${campus.id}/edit`}>Edit Campus</Link>
+      <div className="campus-header">
+        <img src={campus.imageUrl || 'https://picsum.photos/id/193/200/200'} alt="campus"></img>
+        <div className="campus-info">
+          <h1>{campus.name}</h1>
+          <p>{campus.address}</p>
+          <p>{campus.description}</p>
+          <Link to={`${campus.id}/edit`}>Edit Campus</Link>
+        </div>
+      </div>
       <hr></hr>
       <h3>Students:</h3>
-      {campus.students.length === 0 ? (
-        <p>No Students Currently Enrolled</p>
-      ) : (
-        campus.students.map((student) => {
-          let name = student.firstname + " " + student.lastname;
-          return (
-            <div key={student.id}>
-              <Link to={`/student/${student.id}`}>
-                <h2>{name}</h2>
-              </Link>
-              <button onClick={() => handleUnenrollStudent(student.id, allStudents)}>UNENROLL</button>
-            </div>
-          );
-        })
-      )}
+      <div className="campus-students">
+        {campus.students.length === 0 ? (
+          <p>No Students Currently Enrolled</p>
+        ) : (
+          campus.students.map((student) => {
+            let name = student.firstname + " " + student.lastname;
+            return (
+              <div className="campus-student-item" key={student.id}>
+                <Link to={`/student/${student.id}`}>
+                  <h2>{name}</h2>
+                </Link>
+                <hr/>
+                <button className="delete-button" onClick={() => handleUnenrollStudent(student.id, allStudents)}>UNENROLL</button>
+              </div>
+            );
+          })
+        )}
+      </div>
       <hr></hr>
       <h2>Add a Student</h2>
-      <select value={studentIdToAdd} onChange={handleChange}>
+      <select className="campus-options" value={studentIdToAdd} onChange={handleChange}>
         <option value="">Select a Student</option>
         {availableStudents.map((student) => (
           <option key={student.id} value={student.id}>
@@ -56,7 +64,9 @@ const CampusView = (props) => {
           </option>
         ))}
       </select>
-      <button onClick={handleAddStudentEvent}>Add to Campus</button>
+      <button className="add-student-button" onClick={handleAddStudentEvent}>Add to Campus</button>
+      <br/>
+      <button className="add-new-student-button"><Link to="/newstudent">Add New Student</Link></button>
     </div>
   );
 };

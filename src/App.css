@@ -27,6 +27,10 @@ a {
 a:hover{
   transform: scale(1.05);
 }
+hr{
+  color: var(--med-green);
+}
+
 
 .delete-button{
   padding: 2px 12px;
@@ -58,30 +62,121 @@ a:hover{
 }
 
 
-.home-page{
+.home-page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.home-campuses, .home-students {
+.home-page a {
   position: relative;
-  width: fit-content;
   margin: 15px;
   border-radius: 5px;
   border: solid var(--rich-black) 5px;
+  overflow: hidden;
 }
-.home-image-title{
+
+.home-image {
+  display: block;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.home-image-title {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 97%;
+  width: 100%; 
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 25px;
-  font-size: 25px;
+  padding: 25px 10px; 
+  font-size: 20px;
+  text-align: center;
 }
-.home-image-title h3{
+
+.home-image-title h3 {
   margin: 0;
+}
+
+
+
+.campus-students{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.campus-student-item{
+  width:fit-content;
+  margin: 10px;
+  border: solid var(--rich-black) 5px;
+  background-color: var(--med-green);
+  padding: 10px 30px;
+  border-radius: 25px;
+}
+.campus-options{
+  padding: 6px 16px;
+  border: solid var(--rich-black) 2px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+.add-student-button{
+  padding: 6px 12px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--light-green);
+  border-radius: 16px;
+  letter-spacing: 1px;
+  margin-left: 16px;
+}
+.add-new-student-button{
+  padding: 6px 12px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--light-green);
+  border-radius: 16px;
+  letter-spacing: 1px;
+  margin-left: 16px;
+  width: fit-content;
+  margin-top: 16px;
+}
+.add-new-student-button a{
+  color: black;
+}
+.campus-header{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  gap: 25px;
+}
+.campus-header img{
+  border: solid var(--med-green) 3px;
+  max-width: 200px;
+  max-height: 200px;
+  height: auto;
+  width: auto;
+}
+.student-single {
+  margin: 25px;
+}
+.student-single img{
+  border: solid var(--med-green) 3px;
+  max-width: 200px;
+  max-height: 200px;
+  height: auto;
+  width: auto;
+}
+.student-info-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: large;
+}
+
+.student-info {
+  width: fit-content;
+  border: 2px solid #11153e;
+  background-color: var(--med-green);
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-bottom: 5px;
 }
