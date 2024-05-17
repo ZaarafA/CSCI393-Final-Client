@@ -35,7 +35,7 @@ const useStyles = makeStyles( () => ({
 }));
 
 const NewStudentView = (props) => {
-  const {handleChange, handleSubmit } = props;
+  const {handleChange, handleSubmit, errors } = props;
   const classes = useStyles();
 
   // Render a New Student view with an input form
@@ -88,6 +88,9 @@ const NewStudentView = (props) => {
             <br/>
           </form>
           </div>
+          {errors.firstname && <p>{errors.firstname}</p>}
+          {errors.lastname && <p>{errors.lastname}</p>}
+          {errors.email && <p>{errors.email}</p>}
       </div>
     </div>    
   )
