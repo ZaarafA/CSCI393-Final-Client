@@ -37,6 +37,9 @@ const CampusView = (props) => {
       <h1>{campus.name}</h1>
       <p>{campus.address}</p>
       <p>{campus.description}</p>
+      <Link to={`${campus.id}/edit`}>Edit Campus</Link>
+      <hr></hr>
+      <h3>Students:</h3>
       {campus.students.length === 0 ? (
         <p>No Students Currently Enrolled</p>
       ) : (
@@ -51,7 +54,7 @@ const CampusView = (props) => {
           );
         })
       )}
-      <Link to={`${campus.id}/edit`}>Edit Campus</Link>
+      <hr></hr>
       <h2>Add a Student</h2>
       <select value={studentIdToAdd} onChange={handleChange}>
         <option value="">Select a Student</option>
