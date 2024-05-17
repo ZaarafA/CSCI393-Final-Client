@@ -43,3 +43,16 @@ a:hover{
   font-weight: bold;
   letter-spacing: 1px;
 }
+
+.all-students, .all-campuses{
+  display: flex;
+  flex-wrap: wrap;
+}
+.student-item, .campus-item{
+  width: 250px;
+  margin: 10px;
+  border: solid var(--rich-black) 5px;
+  background-color: var(--med-green);
+  padding: 5px;
+  border-radius: 25px;
+}

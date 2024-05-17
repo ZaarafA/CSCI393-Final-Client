@@ -25,19 +25,21 @@ const AllStudentsView = (props) => {
     <div>
       <h1>All Students</h1>
 
-      {students.map((student) => {
-          let name = student.firstname + " " + student.lastname;
-          return (
-            <div key={student.id}>
-              <Link to={`/student/${student.id}`}>
-                <h2>{name}</h2>
-              </Link>
-              <button className="delete-button" onClick={() => deleteStudent(student.id)}>Delete</button>
-              <hr/>
-            </div>
-          );
-        }
-      )}
+      <div className="all-students">
+        {students.map((student) => {
+            let name = student.firstname + " " + student.lastname;
+            return (
+              <div className="student-item" key={student.id}>
+                <Link className="link" to={`/student/${student.id}`}>
+                  <h2>{name}</h2>
+                </Link>
+                <button className="delete-button" onClick={() => deleteStudent(student.id)}>Delete</button>
+                <hr/>
+              </div>
+            );
+          }
+        )}
+      </div>
       <br/>
       <Link to={`/newstudent`}>
         <button className="add-button">Add New Student</button>

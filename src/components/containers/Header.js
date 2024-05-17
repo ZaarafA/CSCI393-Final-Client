@@ -55,19 +55,19 @@ const Header = () => {
           </Typography>
 
           <Link className={classes.links} to={'/'} >
-            <Button variant="contained" color="#00DF81" style={{marginRight: '10px'}}>
+            <Button variant="contained" style={{marginRight: '10px'}}>
               <b>Home</b>
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="#00DF81" style={{marginRight: '10px'}}>
+            <Button variant="contained" style={{marginRight: '10px'}}>
               <b>All Campuses</b>
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="#00DF81">
+            <Button variant="contained">
               <b>All Students</b>
             </Button>
           </Link>
