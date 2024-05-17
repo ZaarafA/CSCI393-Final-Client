@@ -1,6 +1,9 @@
-# client-starter-code
+# 39548 - Campus Management System Client
 
-This repository is the client (front-end) starter code for Final Project - Full-Stack CRUD Application.
+| Faraaz Ali | @ZaarafA |
+|-----------|------------|
+
+This repository is the client (front-end) code for Final Project - Full-Stack CRUD Application.
 
 ----------
 ### 1. Use the following process to ***import*** the Final Project client starter code repository to your GitHub account as the starter codebase
