@@ -8,7 +8,7 @@ If needed, it also defines the component's "connect" function.
 import Header from './Header';
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCampusThunk } from "../../store/thunks";
+import { fetchCampusThunk, fetchAllStudentsThunk, editStudentThunk  } from "../../store/thunks";
 
 import { CampusView } from "../views";
 
@@ -17,14 +17,50 @@ class CampusContainer extends Component {
   componentDidMount() {
     // Get campus ID from URL (API link)
     this.props.fetchCampus(this.props.match.params.id);
+    this.props.fetchAllStudents();
   }
+
+  handleAddStudent = (studentIdToAdd, allStudents, campus) => {
+    if (studentIdToAdd) {
+      const student = allStudents.find(s => s.id === studentIdToAdd);
+      if (student) {
+        const updatedStudent = { ...student, campusId: campus.id };
+        this.props.editStudent(updatedStudent)
+          .then(() => {
+            window.location.reload();
+          })
+          .catch(err => {
+            console.error("Error adding student:", err);
+          });
+      }
+    }
+  };
+
+  handleUnenrollStudent = (studentId, allStudents) => {
+    const student = allStudents.find(s => s.id === studentId);
+    if (student) {
+      const updatedStudent = { ...student, campusId: null };
+      this.props.editStudent(updatedStudent)
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(err => {
+          console.error("Error unenrolling student:", err);
+        });
+    }
+  };
+
 
   // Render a Campus view by passing campus data as props to the corresponding View component
   render() {
     return (
       <div>
         <Header />
-        <CampusView campus={this.props.campus} />
+        <CampusView campus={this.props.campus} 
+        allStudents={this.props.allStudents} 
+        handleAddStudent={this.handleAddStudent}
+        handleUnenrollStudent={this.handleUnenrollStudent}
+        />
       </div>
     );
   }
@@ -36,6 +72,7 @@ class CampusContainer extends Component {
 const mapState = (state) => {
   return {
     campus: state.campus,  // Get the State object from Reducer "campus"
+    allStudents: state.allStudents,
   };
 };
 // 2. The "mapDispatch" argument is used to dispatch Action (Redux Thunk) to Redux Store.
@@ -43,6 +80,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
+    fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
+    editStudent: (student) => dispatch(editStudentThunk(student)),
   };
 };
 

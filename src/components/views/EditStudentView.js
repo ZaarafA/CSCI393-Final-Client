@@ -49,8 +49,11 @@ const EditStudentView = (props) => {
     });
 
     useEffect(() => {
-        setEditedStudent(student);
-    }, [student]);
+      setEditedStudent({
+          ...student,
+          gpa: student.gpa || ''
+      });
+  }, [student])
   
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -78,15 +81,20 @@ const EditStudentView = (props) => {
 
     const isValidGPA = (gpa) => {
         return gpa === "" || (parseFloat(gpa) >= 0.0 && parseFloat(gpa) <= 4.0);
-    }  
+    }
 
     const onSubmit = (event) => {
-        event.preventDefault();
-        if (validateForm()) {
-            handleSubmit(editedStudent);
-            setRedirect(true);
-        }
-    }
+      event.preventDefault();
+      // for the case where the gpa is an empty string => null instead
+      const editedStudentN = {
+          ...editedStudent,
+          gpa: editedStudent.gpa === '' ? null : editedStudent.gpa
+      };
+      if (validateForm()) {
+          handleSubmit(editedStudentN);
+          setRedirect(true);
+      }
+  }
   
     if (redirect) {
       return <Redirect to={`/student/${editedStudent.id}`} />;
@@ -124,7 +132,7 @@ const EditStudentView = (props) => {
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
-            <input type="text" name="gpa" value={editedStudent.gpa} onChange={(e) => handleChange(e)} />
+            <input type="text" name="gpa" value={editedStudent.gpa || ''} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
