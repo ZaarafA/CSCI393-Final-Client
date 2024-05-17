@@ -58,7 +58,6 @@ class CampusContainer extends Component {
         <Header />
         <CampusView campus={this.props.campus} 
         allStudents={this.props.allStudents} 
-        editStudent={this.props.editStudent}
         handleAddStudent={this.handleAddStudent}
         handleUnenrollStudent={this.handleUnenrollStudent}
         />
