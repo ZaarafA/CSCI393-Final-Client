@@ -14,7 +14,7 @@ import { Redirect } from 'react-router-dom';
 const useStyles = makeStyles(() => ({
   formContainer:{  
     width: '500px',
-    backgroundColor: '#f0f0f5',
+    backgroundColor: '#03624c',
     borderRadius: '5px',
     margin: 'auto',
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
     shadows: ['none'],
   },
   formTitle:{
-    backgroundColor:'#c5c8d6',
+    backgroundColor:'#2cc295',
     marginBottom: '15px',
     textAlign: 'center',
     borderRadius: '5px 5px 0px 0px',
@@ -95,27 +95,27 @@ const EditCampusView = (props) => {
               </Typography>
             </div>
             <form style={{textAlign: 'center'}} onSubmit={onSubmit}>
-              <label style={{color:'#11153e', fontWeight: 'bold'}}>Name: </label>
+              <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Name: </label>
               <input type="text" name="name" value={editedCampus.name} onChange={handleChange} />
               <br/>
               <br/>
   
-              <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
+              <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Address: </label>
               <input type="text" name="address" value={editedCampus.address} onChange={handleChange} />
               <br/>
               <br/>
   
-              <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+              <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Description: </label>
               <input type="text" name="description" value={editedCampus.description} onChange={handleChange} />
               <br/>
               <br/>
   
-              <label style={{color:'#11153e', fontWeight: 'bold'}}>Image URL: </label>
+              <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Image URL: </label>
               <input type="text" name="imageUrl" value={editedCampus.imageUrl} onChange={handleChange} />
               <br/>
               <br/>
   
-              <Button variant="contained" color="primary" type="submit">
+              <Button variant="contained" style={{backgroundColor:'#08f793', color:'#01110a', fontWeight:'bold'}} type="submit">
                 Save Changes
               </Button>
               <br/>

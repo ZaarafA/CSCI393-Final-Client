@@ -14,7 +14,7 @@ import { Redirect } from 'react-router-dom';
 const useStyles = makeStyles(() => ({
   formContainer:{  
     width: '500px',
-    backgroundColor: '#f0f0f5',
+    backgroundColor: '#03624c',
     borderRadius: '5px',
     margin: 'auto',
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
     shadows: ['none'],
   },
   formTitle:{
-    backgroundColor:'#c5c8d6',
+    backgroundColor:'#2cc295',
     marginBottom: '15px',
     textAlign: 'center',
     borderRadius: '5px 5px 0px 0px',
@@ -111,37 +111,37 @@ const EditStudentView = (props) => {
               </Typography>
             </div>
             <form style={{textAlign: 'center'}} onSubmit={onSubmit}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
+            <label style= {{color:'#f1f7f6', fontWeight: 'bold'}}>First Name: </label>
             <input type="text" name="firstname" value={editedStudent.firstname} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
+            <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Last Name: </label>
             <input type="text" name="lastname" value={editedStudent.lastname} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
+            <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Email: </label>
             <input type="text" name="email" value={editedStudent.email} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Image URL: </label>
+            <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Image URL: </label>
             <input type="text" name="imageUrl" value={editedStudent.imageUrl} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
+            <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>GPA: </label>
             <input type="text" name="gpa" value={editedStudent.gpa || ''} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Id: </label>
+            <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Campus Id: </label>
             <input type="text" name="campusId" value={editedStudent.campusId} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
   
-              <Button variant="contained" color="primary" type="submit">
+              <Button variant="contained" style={{backgroundColor:'#08f793', color:'#01110a', fontWeight:'bold'}} type="submit">
                 Save Changes
               </Button>
               <br/>

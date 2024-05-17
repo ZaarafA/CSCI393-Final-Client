@@ -149,15 +149,27 @@ hr{
 }
 .campus-header img{
   border: solid var(--med-green) 3px;
+  max-width: 200px;
+  max-height: 200px;
+  height: auto;
+  width: auto;
 }
 .student-single {
   margin: 25px;
+}
+.student-single img{
+  border: solid var(--med-green) 3px;
+  max-width: 200px;
+  max-height: 200px;
+  height: auto;
+  width: auto;
 }
 .student-info-section{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  font-size: large;
 }
 
 .student-info {
