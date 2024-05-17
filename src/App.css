@@ -27,6 +27,10 @@ a {
 a:hover{
   transform: scale(1.05);
 }
+hr{
+  color: var(--med-green);
+}
+
 
 .delete-button{
   padding: 2px 12px;
@@ -84,4 +88,55 @@ a:hover{
 }
 .home-image-title h3{
   margin: 0;
+}
+
+
+.campus-students{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.campus-student-item{
+  width:fit-content;
+  margin: 10px;
+  border: solid var(--rich-black) 5px;
+  background-color: var(--med-green);
+  padding: 10px 30px;
+  border-radius: 25px;
+}
+.campus-options{
+  padding: 6px 16px;
+  border: solid var(--rich-black) 2px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+.add-student-button{
+  padding: 6px 12px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--light-green);
+  border-radius: 16px;
+  letter-spacing: 1px;
+  margin-left: 16px;
+}
+.add-new-student-button{
+  padding: 6px 12px;
+  border: solid var(--rich-black) 2px;
+  background-color: var(--light-green);
+  border-radius: 16px;
+  letter-spacing: 1px;
+  margin-left: 16px;
+  width: fit-content;
+  margin-top: 16px;
+}
+.add-new-student-button a{
+  color: black;
+}
+.campus-header{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  gap: 25px;
+}
+.campus-header img{
+  border: solid var(--med-green) 3px;
 }
