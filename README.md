@@ -4,6 +4,7 @@
 |-----------|------------|
 
 This repository is the client (front-end) code for Final Project - Full-Stack CRUD Application.
+This application is a management system for colleges, allowing for the organization of students and campuses. It allows users to navigate between campuses and students, as well as view and edit information in the database. 
 
 ----------
 ### Application Images:
