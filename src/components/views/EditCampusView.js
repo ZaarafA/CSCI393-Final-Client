@@ -63,7 +63,7 @@ const EditCampusView = (props) => {
       });
     }
 
-    // check that the input fields aren't empty
+    // Secondary Validation: Redundency for the HTML automatic validation
     const validateForm = () => {
       const messages = {
           name: editedCampus.name.trim() === '' ? 'Name cannot be empty' : '',
@@ -107,12 +107,12 @@ const EditCampusView = (props) => {
               <br/>
   
               <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Description: </label>
-              <input type="text" name="description" value={editedCampus.description} onChange={handleChange} />
+              <input type="text" name="description" placeholder='(optional)' value={editedCampus.description} onChange={handleChange} />
               <br/>
               <br/>
   
               <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Image URL: </label>
-              <input type="text" name="imageUrl" value={editedCampus.imageUrl} onChange={handleChange} />
+              <input type="text" name="imageUrl" placeholder='(optional)' value={editedCampus.imageUrl} onChange={handleChange} />
               <br/>
               <br/>
   

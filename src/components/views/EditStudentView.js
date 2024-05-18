@@ -66,8 +66,9 @@ const EditStudentView = (props) => {
           email: name === 'email' ? '' : validationMessages.email, 
           gpa: name === 'gpa' ? '' : validationMessages.gpa, 
       });
-  }
+    }
   
+    // Secondary Validation: Redundency for the HTML automatic validation
     const validateForm = () => {
       const messages = {
           firstName: editedStudent.firstname.trim() === '' ? 'First name cannot be empty' : '',
@@ -123,22 +124,22 @@ const EditStudentView = (props) => {
             <br/>
 
             <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Email: </label>
-            <input type="text" name="email" value={editedStudent.email} onChange={(e) => handleChange(e)} />
+            <input type="email" name="email" value={editedStudent.email} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
             <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Image URL: </label>
-            <input type="text" name="imageUrl" value={editedStudent.imageUrl} onChange={(e) => handleChange(e)} />
+            <input type="text" name="imageUrl" placeholder='(optional)' value={editedStudent.imageUrl} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
             <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>GPA: </label>
-            <input type="text" name="gpa" value={editedStudent.gpa || ''} onChange={(e) => handleChange(e)} />
+            <input type="number" name="gpa" placeholder='(optional)' value={editedStudent.gpa || ''} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
             <label style={{color:'#f1f7f6', fontWeight: 'bold'}}>Campus Id: </label>
-            <input type="text" name="campusId" value={editedStudent.campusId} onChange={(e) => handleChange(e)} />
+            <input type="number" name="campusId" placeholder='(optional)' value={editedStudent.campusId} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
   
