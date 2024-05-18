@@ -63,10 +63,11 @@ const EditCampusView = (props) => {
       });
     }
 
+    // check that the input fields aren't empty
     const validateForm = () => {
       const messages = {
-          name: editedCampus.name.trim() === '' ? 'First name cannot be empty' : '',
-          address: editedCampus.address.trim() === '' ? 'Last name cannot be empty' : '',
+          name: editedCampus.name.trim() === '' ? 'Name cannot be empty' : '',
+          address: editedCampus.address.trim() === '' ? 'Address cannot be empty' : '',
       };
       setValidationMessages(messages);
       return Object.values(messages).every(message => message === '');

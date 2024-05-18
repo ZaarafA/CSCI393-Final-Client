@@ -53,6 +53,8 @@ class NewStudentContainer extends Component {
     if(!this.validateForm()){
       return;
     }
+
+    // Convert empty string into null for the database call
     let student = {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
@@ -78,6 +80,7 @@ class NewStudentContainer extends Component {
     });
   }
 
+  // Form Validation: Required fields and decimal boundaries
   validateForm = () => {
     const { firstname, lastname, email, gpa } = this.state;
     const errors = {
@@ -87,6 +90,7 @@ class NewStudentContainer extends Component {
       gpa: (gpa !== '' && (parseFloat(gpa) < 0.0 || parseFloat(gpa) > 4.0)) ? 'GPA must be either blank or between 0.0 and 4.0' : '',
     };
 
+    // Since GPA can be blank, check the others in that case
     this.setState({ errors });
     const { gpa: gpaError, ...otherErrors } = errors;
     return !(Object.values(otherErrors).some(error => error !== ''));

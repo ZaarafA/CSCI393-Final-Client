@@ -46,6 +46,7 @@ class NewCampusContainer extends Component {
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
+    // Form Validation: Name and Address fields cannot be empty
     if (this.state.name.trim() === '' || this.state.address.trim() === '') {
       this.setState({
         errors: {

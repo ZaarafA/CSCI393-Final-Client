@@ -1,3 +1,4 @@
+/* COLOR PALETTE */
 :root{
   --rich-black: #01110a;
   --dark-green: #032221;
@@ -8,6 +9,7 @@
   --red: #b8293d;
 }
 
+/* Root Level CSS */
 .App {
   background-color: var(--dark-green);
   min-height: 100vh;
@@ -30,8 +32,6 @@ a:hover{
 hr{
   color: var(--med-green);
 }
-
-
 .delete-button{
   padding: 2px 12px;
   border: solid var(--rich-black) 2px;
@@ -48,6 +48,7 @@ hr{
   letter-spacing: 1px;
 }
 
+/* ALL-CAMPUSES, ALL-STUDENTS */
 .all-students, .all-campuses{
   display: flex;
   flex-wrap: wrap;
@@ -73,7 +74,7 @@ hr{
   border-radius: 100%;
 }
 
-
+/* HOME PAGE  */
 .home-page {
   display: flex;
   flex-direction: row;
@@ -112,7 +113,7 @@ hr{
 }
 
 
-
+/* SINGLE CAMPUS PAGES */
 .campus-students{
   display: flex;
   flex-wrap: wrap;
@@ -166,6 +167,8 @@ hr{
   height: auto;
   width: auto;
 }
+
+/* SINGLE STUDENT PAGE */
 .student-single {
   margin: 25px;
 }

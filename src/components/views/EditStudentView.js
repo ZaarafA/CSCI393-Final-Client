@@ -53,32 +53,33 @@ const EditStudentView = (props) => {
           ...student,
           gpa: student.gpa || ''
       });
-  }, [student])
+    }, [student])
   
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setEditedStudent({ ...editedStudent, [name]: value });
-        setValidationMessages({
-            ...validationMessages,
-            [name]: '',
-            firstName: name === 'firstname' ? '' : validationMessages.firstName,
-            lastName: name === 'lastname' ? '' : validationMessages.lastName, 
-            email: name === 'email' ? '' : validationMessages.email, 
-            gpa: name === 'gpa' ? '' : validationMessages.gpa, 
-        });
-    }
+      const { name, value } = event.target;
+      setEditedStudent({ ...editedStudent, [name]: value });
+      setValidationMessages({
+          ...validationMessages,
+          [name]: '',
+          firstName: name === 'firstname' ? '' : validationMessages.firstName,
+          lastName: name === 'lastname' ? '' : validationMessages.lastName, 
+          email: name === 'email' ? '' : validationMessages.email, 
+          gpa: name === 'gpa' ? '' : validationMessages.gpa, 
+      });
+  }
   
     const validateForm = () => {
-        const messages = {
-            firstName: editedStudent.firstname.trim() === '' ? 'First name cannot be empty' : '',
-            lastName: editedStudent.lastname.trim() === '' ? 'Last name cannot be empty' : '',
-            email: editedStudent.email.trim() === '' ? 'Email cannot be empty' : '',
-            gpa: !isValidGPA(editedStudent.gpa) ? 'GPA must be either blank or between 0.0 and 4.0' : '',
-        };
-        setValidationMessages(messages);
-        return Object.values(messages).every(message => message === '');
+      const messages = {
+          firstName: editedStudent.firstname.trim() === '' ? 'First name cannot be empty' : '',
+          lastName: editedStudent.lastname.trim() === '' ? 'Last name cannot be empty' : '',
+          email: editedStudent.email.trim() === '' ? 'Email cannot be empty' : '',
+          gpa: !isValidGPA(editedStudent.gpa) ? 'GPA must be either blank or between 0.0 and 4.0' : '',
+      };
+      setValidationMessages(messages);
+      return Object.values(messages).every(message => message === '');
     }
 
+    // gpa can either be empty or a value between 0.0 and 4.0
     const isValidGPA = (gpa) => {
         return gpa === "" || (parseFloat(gpa) >= 0.0 && parseFloat(gpa) <= 4.0);
     }
@@ -94,7 +95,7 @@ const EditStudentView = (props) => {
           handleSubmit(editedStudentN);
           setRedirect(true);
       }
-  }
+    }
   
     if (redirect) {
       return <Redirect to={`/student/${editedStudent.id}`} />;
@@ -149,10 +150,11 @@ const EditStudentView = (props) => {
             </form>
             
           </div>
-        <span>{validationMessages.firstName}</span><br/>
-        <span>{validationMessages.lastName}</span><br/>
-        <span>{validationMessages.email}</span><br/>
-        <span>{validationMessages.gpa}</span><br/>
+        {/* Error messages */}
+        <div>{validationMessages.firstName}</div><br/>
+        <div>{validationMessages.lastName}</div><br/>
+        <div>{validationMessages.email}</div><br/>
+        <div>{validationMessages.gpa}</div><br/>
         </div>
       </div>    
     )

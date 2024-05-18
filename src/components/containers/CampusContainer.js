@@ -24,9 +24,11 @@ class CampusContainer extends Component {
     if (studentIdToAdd) {
       const student = allStudents.find(s => s.id === studentIdToAdd);
       if (student) {
+        // add the campus id to the student's entry
         const updatedStudent = { ...student, campusId: campus.id };
         this.props.editStudent(updatedStudent)
           .then(() => {
+            // reload data on page
             this.props.fetchCampus(this.props.match.params.id);
             this.props.fetchAllStudents();
           })
@@ -38,11 +40,13 @@ class CampusContainer extends Component {
   };
 
   handleUnenrollStudent = (studentId, allStudents) => {
+    // remove the campus id from the student to unenroll them
     const student = allStudents.find(s => s.id === studentId);
     if (student) {
       const updatedStudent = { ...student, campusId: null };
       this.props.editStudent(updatedStudent)
         .then(() => {
+          // reload the data on the page
           this.props.fetchCampus(this.props.match.params.id);
           this.props.fetchAllStudents();
         })
