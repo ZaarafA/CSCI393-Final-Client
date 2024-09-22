@@ -1,4 +1,4 @@
-# 39548 - Campus Management System Client
+# Campus Management System Client
 
 | Faraaz Ali | @ZaarafA |
 |-----------|------------|
